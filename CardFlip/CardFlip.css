@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+  }
+  
+  .card-wrap {
+    position: relative; 
+    width: calc(100%*0.25); /* 자식요소들 (카드 앞,뒤) 사이즈 통일 때문에 크기 지정 필수*/
+    height: 200px; /* 자식요소들 (카드 앞,뒤) 사이즈 통일 때문에 크기 지정 필수*/
+}
+  
+  /* 카드 앞면 */
+  .card-front {
+    width: 100%; /* card-wrap크기에 100% 맞춘다 */
+    height: 100%; /* card-wrap크기에 100% 맞춘다 */
+    border-radius: 12px;
+    background-color: #c8a2c8;
+  }
+  
+  /* 카드 뒷면 */
+  .card-back {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; /* 부모영역 card-wrap 크기에 맞춘다 */
+    height: 100%; /* card-wrap크기에 100% 맞춘다 */
+    border-radius: 12px;
+    border: 1px solid black;
+    opacity: 0; /* 앞면과 겹쳐져있으니깐 투명하게해서 안보이게함 */
+  }
+
+  /* 애니메이션영역 */
+  .card-wrap:hover .card-front {
+    transform: rotateY(180deg); /* 180도 돌렸을때 앞면을 투명하게 */
+    opacity: 0;
+  }
+  
+  .card-wrap:hover .card-back {
+    transform: rotateY(360deg); /* 360도 돌렸을때 뒷면이 나오게 */
+    opacity: 1;
+  }
+  
+  .card-wrap .card-front,
+  .card-wrap .card-back {
+    transition: all .2s; /* 자연스러운 효과를 위해 시간 설정 */
+  }
+  
+  .card-wrap:hover .card-front,
+  .card-wrap:hover .card-back {
+    transition: all .4s; /* 자연스러운 효과를 위해 시간 설정 */
+  } 
